@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
-    <div>
-      <footer className="footer bg-neutral text-neutral-content p-10">
+    <footer>
+      <div className="footer bg-neutral text-neutral-content p-10">
         <aside>
           <svg
             width="50"
@@ -58,8 +58,17 @@ const Footer = () => {
             </a>
           </div>
         </nav>
-      </footer>
-    </div>
+        
+      </div>
+      <div className="footer-center bg-[#151515] text-white p-4">
+          <aside>
+            <p>
+              Copyright © {new Date().getFullYear()} - All right reserved by
+              ACME Industries Ltd
+            </p>
+          </aside>
+        </div>
+    </footer>
   );
 };
 
