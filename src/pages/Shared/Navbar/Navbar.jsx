@@ -11,16 +11,32 @@ const Navbar = () => {
         >Home</NavLink>
       </li>
       <li>
-        <NavLink to='/contact'>Contact Us</NavLink>
+        <NavLink to='/contact'
+        className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "text-yellow-500 font-bold" : "text-white"
+          }
+        >Contact Us</NavLink>
       </li>
       <li>
-        <NavLink to='/dashboard'>Dashboard</NavLink>
+        <NavLink to='/dashboard'
+        className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "text-yellow-500 font-bold" : "text-white"
+          }
+        >Dashboard</NavLink>
       </li>
       <li>
-        <NavLink to='/menu'>Our Menu</NavLink>
+        <NavLink to='/menu'
+        className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "text-yellow-500 font-bold" : "text-white"
+          }
+        >Our Menu</NavLink>
       </li>
       <li>
-        <NavLink to='/shop'>Our Shop</NavLink>
+        <NavLink to='/shop'
+        className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "text-yellow-500 font-bold" : "text-white"
+          }
+        >Our Shop</NavLink>
       </li>
       <li>
         <NavLink className="btn" to='/login'>Login</NavLink>

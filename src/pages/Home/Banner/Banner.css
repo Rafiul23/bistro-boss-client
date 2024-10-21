@@ -1,0 +1,9 @@
+.carousel .thumbs-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .carousel .thumb {
+    margin: 0 5px; /* Optional: Adjust spacing between thumbnails */
+  }
+  
