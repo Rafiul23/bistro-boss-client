@@ -1,22 +1,29 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const navItems = (
     <>
       <li>
-        <Link to='/'>Home</Link>
+        <NavLink to='/'
+        className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "text-yellow-500 font-bold" : "text-white"
+          }
+        >Home</NavLink>
       </li>
       <li>
-        <Link to='/contact'>Contact Us</Link>
+        <NavLink to='/contact'>Contact Us</NavLink>
       </li>
       <li>
-        <Link to='/dashboard'>Dashboard</Link>
+        <NavLink to='/dashboard'>Dashboard</NavLink>
       </li>
       <li>
-        <Link to='/menu'>Our Menu</Link>
+        <NavLink to='/menu'>Our Menu</NavLink>
       </li>
       <li>
-        <Link to='/shop'>Our Shop</Link>
+        <NavLink to='/shop'>Our Shop</NavLink>
+      </li>
+      <li>
+        <NavLink className="btn" to='/login'>Login</NavLink>
       </li>
 
       
@@ -56,13 +63,12 @@ const Navbar = () => {
             R e s t a u r a n t
           </a>
         </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+        
+        <div className="navbar-end hidden lg:flex">
+        <ul className="flex items-center gap-4 px-1">
           {navItems}
+          
           </ul>
-        </div>
-        <div className="navbar-end">
-          <a className="btn">Button</a>
         </div>
       </div>
     </>
