@@ -6,9 +6,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
-
+import { Rating } from '@smastrom/react-rating'
+import '@smastrom/react-rating/style.css'
 // import required modules
-import { Navigation } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules";
 
 const Testimonials = () => {
 
@@ -27,8 +28,16 @@ const Testimonials = () => {
         subHeading={"What Our Clients Say"}
       ></SectionTitle>
 
-      <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
-        <SwiperSlide>Slide 1</SwiperSlide>
+      <Swiper autoplay={true} navigation={true} modules={[Navigation, Autoplay]} className="mySwiper">
+        {
+            reviews.map(review => <SwiperSlide key={review._id}>
+                <div className="flex flex-col items-center space-y-4 m-20">
+                <Rating style={{ maxWidth: 250, }} readOnly={true} value={review.rating} />
+                <p>{review.details}</p>
+                <h3 className="text-yellow-600 font-bold text-xl">{review.name}</h3>
+                </div>
+            </SwiperSlide>)
+        }
         
       </Swiper>
     </section>
