@@ -32,10 +32,10 @@ const Testimonials = () => {
       <Swiper autoplay={true} navigation={true} modules={[Navigation, Autoplay]} className="mySwiper">
         {
             reviews.map(review => <SwiperSlide key={review._id}>
-                <div className="flex flex-col items-center space-y-4 m-20">
+                <div className="flex flex-col items-center space-y-4 my-16 mx-24">
                     <FaQuoteLeft className="text-7xl" />
                 <Rating style={{ maxWidth: 250, }} readOnly={true} value={review.rating} />
-                <p className="mt-5 text-center">{review.details}</p>
+                <p className="mb-8 text-center">{review.details}</p>
                 <h3 className="text-yellow-600 font-bold text-xl">{review.name}</h3>
                 </div>
             </SwiperSlide>)
