@@ -2,6 +2,7 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { useEffect, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import { FaQuoteLeft } from "react-icons/fa";
 
 // Import Swiper styles
 import "swiper/css";
@@ -32,8 +33,9 @@ const Testimonials = () => {
         {
             reviews.map(review => <SwiperSlide key={review._id}>
                 <div className="flex flex-col items-center space-y-4 m-20">
+                    <FaQuoteLeft className="text-7xl" />
                 <Rating style={{ maxWidth: 250, }} readOnly={true} value={review.rating} />
-                <p>{review.details}</p>
+                <p className="mt-5 text-center">{review.details}</p>
                 <h3 className="text-yellow-600 font-bold text-xl">{review.name}</h3>
                 </div>
             </SwiperSlide>)
