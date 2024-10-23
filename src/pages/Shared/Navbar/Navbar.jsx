@@ -32,11 +32,11 @@ const Navbar = () => {
         >Our Menu</NavLink>
       </li>
       <li>
-        <NavLink to='/shop'
+        <NavLink to='/order'
         className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "text-yellow-500 font-bold" : "text-white"
           }
-        >Our Shop</NavLink>
+        >Order Food</NavLink>
       </li>
       <li>
         <NavLink className="btn" to='/login'>Login</NavLink>
