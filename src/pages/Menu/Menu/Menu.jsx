@@ -8,6 +8,7 @@ import soup_img from '../../../assets/menu/soup-bg.jpg';
 import useMenu from "../../../hooks/useMenu";
 import SectionTitle from "./../../../components/SectionTitle/SectionTitle";
 import MenuCategory from "../MenuCategory/MenuCategory";
+import MenuItem from "../MenuItem/MenuItem";
 
 const Menu = () => {
   const [menu] = useMenu();
@@ -39,11 +40,56 @@ const Menu = () => {
         </button>
       </div>
     
+    <MenuItem
+    img={desert_img}
+    title={'Deserts'}
+    subTitle={'Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'}
+    items={dessert}
+    ></MenuItem>
+
+      
+
+      <div className="mb-10">
       <Cover
-        img={menu_bg}
-        title={"Deserts"}
+        img={pizza_img}
+        title={"Pizza"}
         subTitle={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}
       ></Cover>
+      </div>
+      <MenuCategory items={pizza}></MenuCategory>
+      <div className="text-center my-10">
+        <button className="btn btn-outline border-0 border-b-4">
+          Order Your Favourite Food
+        </button>
+      </div>
+
+      <div className="mb-10">
+      <Cover
+        img={salad_img}
+        title={"Salads"}
+        subTitle={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}
+      ></Cover>
+      </div>
+      <MenuCategory items={salad}></MenuCategory>
+      <div className="text-center my-10">
+        <button className="btn btn-outline border-0 border-b-4">
+          Order Your Favourite Food
+        </button>
+      </div>
+
+     <div className="mb-10">
+     <Cover
+        img={soup_img}
+        title={"Soups"}
+        subTitle={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}
+      ></Cover>
+     </div>
+      <MenuCategory items={soup}></MenuCategory>
+      <div className="text-center my-10">
+        <button className="btn btn-outline border-0 border-b-4">
+          Order Your Favourite Food
+        </button>
+      </div>
 
     </div>
   );
