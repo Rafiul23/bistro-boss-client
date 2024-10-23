@@ -1,9 +1,9 @@
 const FoodCard = ({item}) => {
     const {image, name, recipe, price} = item;
   return (
-    <div className="card bg-base-200 shadow-xl">
+    <div className="card bg-base-200">
       <figure>
-        <img src={image} alt="Food" />
+        <img src={image} className="w-full" alt="Food" />
       </figure>
       <div className="card-body text-center">
         <h2 className="text-3xl font-bold">{name}</h2>

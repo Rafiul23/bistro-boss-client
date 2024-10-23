@@ -4,6 +4,7 @@ import Cover from "../Shared/Cover/Cover";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import useMenu from "../../hooks/useMenu";
+import FoodCard from "../Shared/FoodCard/FoodCard";
 
 const Order = () => {
   const [tabIndex, setTabIndex] = useState(0);
@@ -32,10 +33,39 @@ const Order = () => {
         </TabList>
 
         <TabPanel>
-          <h2>Any content 1</h2>
+          <div className="grid md:grid-cols-3 grid-cols-1 gap-6">
+            {salad.map((item) => (
+              <FoodCard key={item._id} item={item}></FoodCard>
+            ))}
+          </div>
         </TabPanel>
         <TabPanel>
-          <h2>Any content 2</h2>
+          <div className="grid md:grid-cols-3 grid-cols-1 gap-6">
+            {pizza.map((item) => (
+              <FoodCard key={item._id} item={item}></FoodCard>
+            ))}
+          </div>
+        </TabPanel>
+        <TabPanel>
+          <div className="grid md:grid-cols-3 grid-cols-1 gap-6">
+            {soup.map((item) => (
+              <FoodCard key={item._id} item={item}></FoodCard>
+            ))}
+          </div>
+        </TabPanel>
+        <TabPanel>
+          <div className="grid md:grid-cols-3 grid-cols-1 gap-6">
+            {dessert.map((item) => (
+              <FoodCard key={item._id} item={item}></FoodCard>
+            ))}
+          </div>
+        </TabPanel>
+        <TabPanel>
+          <div className="grid md:grid-cols-3 grid-cols-1 gap-6">
+            {drinks.map((item) => (
+              <FoodCard key={item._id} item={item}></FoodCard>
+            ))}
+          </div>
         </TabPanel>
       </Tabs>
     </div>
