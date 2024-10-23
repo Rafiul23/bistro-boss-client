@@ -14,25 +14,7 @@ const Menu = () => {
             title={'Our Menu'}
             subTitle={'Would you like to try a dish?'}
             ></Cover>
-            <PopularMenu></PopularMenu>
-            <Cover
-            img={menu_bg}
-            title={'Our Menu'}
-            subTitle={'Would you like to try a dish?'}
-            ></Cover>
-            <PopularMenu></PopularMenu>
-            <Cover
-            img={menu_bg}
-            title={'Our Menu'}
-            subTitle={'Would you like to try a dish?'}
-            ></Cover>
-            <PopularMenu></PopularMenu>
-            <Cover
-            img={menu_bg}
-            title={'Our Menu'}
-            subTitle={'Would you like to try a dish?'}
-            ></Cover>
-            <PopularMenu></PopularMenu>
+            
         </div>
     );
 };
