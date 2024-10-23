@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import Cover from "../../Shared/Cover/Cover";
 import menu_bg from '../../../assets/menu/banner3.jpg';
+import PopularMenu from './../../Home/PopularMenu/PopularMenu';
 
 const Menu = () => {
     return (
@@ -13,6 +14,25 @@ const Menu = () => {
             title={'Our Menu'}
             subTitle={'Would you like to try a dish?'}
             ></Cover>
+            <PopularMenu></PopularMenu>
+            <Cover
+            img={menu_bg}
+            title={'Our Menu'}
+            subTitle={'Would you like to try a dish?'}
+            ></Cover>
+            <PopularMenu></PopularMenu>
+            <Cover
+            img={menu_bg}
+            title={'Our Menu'}
+            subTitle={'Would you like to try a dish?'}
+            ></Cover>
+            <PopularMenu></PopularMenu>
+            <Cover
+            img={menu_bg}
+            title={'Our Menu'}
+            subTitle={'Would you like to try a dish?'}
+            ></Cover>
+            <PopularMenu></PopularMenu>
         </div>
     );
 };
