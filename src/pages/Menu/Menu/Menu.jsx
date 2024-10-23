@@ -1,6 +1,10 @@
 import { Helmet } from "react-helmet-async";
 import Cover from "../../Shared/Cover/Cover";
 import menu_bg from "../../../assets/menu/banner3.jpg";
+import desert_img from '../../../assets/menu/dessert-bg.jpeg';
+import pizza_img from '../../../assets/menu/pizza-bg.jpg';
+import salad_img from '../../../assets/menu/salad-bg.jpg';
+import soup_img from '../../../assets/menu/soup-bg.jpg';
 import useMenu from "../../../hooks/useMenu";
 import SectionTitle from "./../../../components/SectionTitle/SectionTitle";
 import MenuCategory from "../MenuCategory/MenuCategory";
@@ -34,6 +38,13 @@ const Menu = () => {
           Order Your Favourite Food
         </button>
       </div>
+    
+      <Cover
+        img={menu_bg}
+        title={"Deserts"}
+        subTitle={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}
+      ></Cover>
+
     </div>
   );
 };
