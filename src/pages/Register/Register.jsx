@@ -1,23 +1,21 @@
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import loginImage from '../../assets/others/authentication1.png';
+import registerImage from '../../assets/others/authentication2.png';
 
-const Login = () => {
+const Register = () => {
     const [hidden, setHidden] = useState(true);
 
-    const handleLogin = e =>{
+    const handleRegister = e =>{
 
     }
 
     return (
         <div className="py-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="w-full flex justify-center items-center">
-          <img src={loginImage} alt="login image" width={500} height={500} />
-        </div>
+        
         <div className="card bg-base-100 w-full shadow-xl">
-          <form className="card-body" onSubmit={handleLogin}>
+          <form className="card-body" onSubmit={handleRegister}>
             <h2 className="text-3xl text-center text-amber-500 py-6 font-bold">
               Login Now!
             </h2>
@@ -45,12 +43,12 @@ const Login = () => {
                 required
               />
               <p className="pt-6">
-                New to Bistro Boss? Please,{" "}
+                Already have an account? Please,{" "}
                 <Link
                   href="/signup"
                   className="text-amber-500 font-bold underline"
                 >
-                  Register!
+                  Login!
                 </Link>{" "}
               </p>
             </div>
@@ -71,9 +69,12 @@ const Login = () => {
             <SocialLogin></SocialLogin>
           </div> */}
         </div>
+        <div className="w-full flex justify-center items-center">
+          <img src={registerImage} alt="login image" width={500} height={500} />
+        </div>
       </div>
     </div>
     );
 };
 
-export default Login;
+export default Register;
