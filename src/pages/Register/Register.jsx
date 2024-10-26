@@ -17,8 +17,20 @@ const Register = () => {
         <div className="card bg-base-100 w-full shadow-xl">
           <form className="card-body" onSubmit={handleRegister}>
             <h2 className="text-3xl text-center text-amber-500 py-6 font-bold">
-              Login Now!
+              Register Now!
             </h2>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Name</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Your Full Name"
+                name="name"
+                className="input input-bordered"
+                required
+              />
+            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -45,7 +57,7 @@ const Register = () => {
               <p className="pt-6">
                 Already have an account? Please,{" "}
                 <Link
-                  href="/signup"
+                  to="/login"
                   className="text-amber-500 font-bold underline"
                 >
                   Login!

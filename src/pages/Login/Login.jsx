@@ -47,7 +47,7 @@ const Login = () => {
               <p className="pt-6">
                 New to Bistro Boss? Please,{" "}
                 <Link
-                  href="/signup"
+                  to="/register"
                   className="text-amber-500 font-bold underline"
                 >
                   Register!
