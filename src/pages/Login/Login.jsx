@@ -18,7 +18,7 @@ const Login = () => {
         </div>
         <div className="card bg-base-100 w-full shadow-xl">
           <form className="card-body" onSubmit={handleLogin}>
-            <h2 className="text-3xl text-center text-amber-500 py-6 font-bold">
+            <h2 className="text-3xl text-center py-6 font-bold">
               Login Now!
             </h2>
             <div className="form-control">
@@ -47,15 +47,15 @@ const Login = () => {
               <p className="pt-6">
                 New to Bistro Boss? Please,{" "}
                 <Link
-                  to="/register"
-                  className="text-amber-500 font-bold underline"
+                  to="/signup"
+                  className="text-[#d1a054] font-bold underline"
                 >
-                  Register!
+                  Sign Up!
                 </Link>{" "}
               </p>
             </div>
             <div className="form-control mt-6">
-              <button className="btn bg-amber-500 text-white">Login</button>
+              <button className="btn bg-[#d1a054] text-white">Login</button>
             </div>
           </form>
 

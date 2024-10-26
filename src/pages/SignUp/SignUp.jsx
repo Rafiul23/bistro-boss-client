@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import registerImage from '../../assets/others/authentication2.png';
+import signUpImage from '../../assets/others/authentication2.png';
 
-const Register = () => {
+const SignUp = () => {
     const [hidden, setHidden] = useState(true);
 
-    const handleRegister = e =>{
+    const handleSignUp = e =>{
 
     }
 
@@ -15,9 +15,9 @@ const Register = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         
         <div className="card bg-base-100 w-full shadow-xl">
-          <form className="card-body" onSubmit={handleRegister}>
-            <h2 className="text-3xl text-center text-amber-500 py-6 font-bold">
-              Register Now!
+          <form className="card-body" onSubmit={handleSignUp}>
+            <h2 className="text-3xl text-center py-6 font-bold">
+              Sign Up!
             </h2>
             <div className="form-control">
               <label className="label">
@@ -58,14 +58,14 @@ const Register = () => {
                 Already have an account? Please,{" "}
                 <Link
                   to="/login"
-                  className="text-amber-500 font-bold underline"
+                  className="text-[#d1a054] font-bold underline"
                 >
                   Login!
                 </Link>{" "}
               </p>
             </div>
             <div className="form-control mt-6">
-              <button className="btn bg-amber-500 text-white">Login</button>
+              <button className="btn bg-[#d1a054] text-white">Sign Up</button>
             </div>
           </form>
 
@@ -82,11 +82,11 @@ const Register = () => {
           </div> */}
         </div>
         <div className="w-full flex justify-center items-center">
-          <img src={registerImage} alt="login image" width={500} height={500} />
+          <img src={signUpImage} alt="signup image" width={500} height={500} />
         </div>
       </div>
     </div>
     );
 };
 
-export default Register;
+export default SignUp;
