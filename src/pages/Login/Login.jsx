@@ -18,7 +18,9 @@ const Login = () => {
       const user_captcha_value = captchaRef.current.value;
       if(validateCaptcha(user_captcha_value)){
         setDisabled(false);
-      } 
+      } else {
+        setDisabled(true);
+      }
     }
 
     const handleLogin = e =>{
