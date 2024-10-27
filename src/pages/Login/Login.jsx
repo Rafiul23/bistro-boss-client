@@ -1,10 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import loginImage from '../../assets/others/authentication1.png';
+import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
+
 
 const Login = () => {
     const [hidden, setHidden] = useState(true);
+
+    useEffect(()=>{
+      loadCaptchaEnginge(6); 
+    }, [])
+
+    const handleValidateCaptcha = ()=>{
+      
+    }
 
     const handleLogin = e =>{
 
@@ -53,6 +63,19 @@ const Login = () => {
                   Sign Up!
                 </Link>{" "}
               </p>
+            </div>
+            <div className="form-control">
+              <label className="label">
+              <LoadCanvasTemplate />
+              </label>
+              <input
+                type="text"
+                placeholder="Type the captcha above"
+                name="captcha"
+                className="input input-bordered"
+                required
+              />
+              <button onClick={handleValidateCaptcha} className="btn btn-outline btn-xs mt-4">Validate Captcha</button>
             </div>
             <div className="form-control mt-6">
               <button className="btn bg-[#d1a054] text-white">Login</button>

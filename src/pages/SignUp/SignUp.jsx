@@ -6,6 +6,7 @@ import signUpImage from '../../assets/others/authentication2.png';
 const SignUp = () => {
     const [hidden, setHidden] = useState(true);
 
+   
     const handleSignUp = e =>{
 
     }
@@ -64,6 +65,7 @@ const SignUp = () => {
                 </Link>{" "}
               </p>
             </div>
+            
             <div className="form-control mt-6">
               <button className="btn bg-[#d1a054] text-white">Sign Up</button>
             </div>
