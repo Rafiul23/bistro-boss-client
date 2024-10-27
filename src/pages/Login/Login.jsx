@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import loginImage from '../../assets/others/authentication1.png';
@@ -7,13 +7,18 @@ import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-s
 
 const Login = () => {
     const [hidden, setHidden] = useState(true);
+    const [disabled, setDisabled] = useState(true);
+    const captchaRef = useRef(null);
 
     useEffect(()=>{
       loadCaptchaEnginge(6); 
     }, [])
 
     const handleValidateCaptcha = ()=>{
-      
+      const user_captcha_value = captchaRef.current.value;
+      if(validateCaptcha(user_captcha_value)){
+        setDisabled(false);
+      } 
     }
 
     const handleLogin = e =>{
@@ -70,6 +75,7 @@ const Login = () => {
               </label>
               <input
                 type="text"
+                ref={captchaRef}
                 placeholder="Type the captcha above"
                 name="captcha"
                 className="input input-bordered"
@@ -78,11 +84,11 @@ const Login = () => {
               <button onClick={handleValidateCaptcha} className="btn btn-outline btn-xs mt-4">Validate Captcha</button>
             </div>
             <div className="form-control mt-6">
-              <button className="btn bg-[#d1a054] text-white">Login</button>
+              <button disabled={disabled} className="btn bg-[#d1a054] text-white">Login</button>
             </div>
           </form>
 
-          <div className="relative -top-[195px]">
+          <div className="relative -top-[360px]">
             <div className="absolute right-16">
               <button onClick={() => setHidden(!hidden)}>
                 {hidden ? <FaEye></FaEye> : <FaEyeSlash></FaEyeSlash>}
