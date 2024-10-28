@@ -14,7 +14,15 @@ const SignUp = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {};
+  const onSubmit = (data) => {
+    const email = data.email;
+    const password = data.password;
+    createUser(email, password)
+    .then(result =>{
+      const user = result.user;
+      console.log(user);
+    })
+  };
 
   return (
     <>
@@ -73,7 +81,7 @@ const SignUp = () => {
                    required: true,
                    minLength: 6,
                    maxLength: 20,
-                   pattern: /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])$/
+                   pattern: /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{6,}$/
                   })}
               />
               {errors.password?.type === 'required' && (
