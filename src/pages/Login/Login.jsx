@@ -5,6 +5,7 @@ import loginImage from '../../assets/others/authentication1.png';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
@@ -36,6 +37,23 @@ const Login = () => {
       .then(result =>{
         const user = result.user;
         console.log(user);
+        Swal.fire({
+          title: "Login Successful",
+          showClass: {
+            popup: `
+              animate__animated
+              animate__fadeInUp
+              animate__faster
+            `
+          },
+          hideClass: {
+            popup: `
+              animate__animated
+              animate__fadeOutDown
+              animate__faster
+            `
+          }
+        });
       })
     }
 
