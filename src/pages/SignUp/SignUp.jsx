@@ -67,11 +67,20 @@ const SignUp = () => {
                    required: true,
                    minLength: 6,
                    maxLength: 20,
-                   
+                   pattern: /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])$/
                   })}
               />
               {errors.password?.type === 'required' && (
                 <span className="text-red-600 mt-2">Password is required</span>
+              )}
+              {errors.password?.type === 'minLength' && (
+                <span className="text-red-600 mt-2">Password must be at least 6 characters</span>
+              )}
+              {errors.password?.type === 'maxLength' && (
+                <span className="text-red-600 mt-2">Password should not be more than 20 characters</span>
+              )}
+              {errors.password?.type === 'pattern' && (
+                <span className="text-red-600 mt-2">Password must have one uppercase, one lowercase, one number and one special character</span>
               )}
               <p className="pt-6">
                 Already have an account? Please,{" "}
