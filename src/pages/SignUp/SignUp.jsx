@@ -3,18 +3,24 @@ import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import signUpImage from "../../assets/others/authentication2.png";
 import { useForm } from "react-hook-form";
+import { Helmet } from "react-helmet-async";
+import useAuth from "../../hooks/useAuth";
 
 const SignUp = () => {
   const [hidden, setHidden] = useState(true);
+  const {createUser} = useAuth();
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {};
 
   return (
+    <>
+    <Helmet>
+      <title>Bistro Boss | Sign Up</title>
+    </Helmet>
     <div className="py-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="card bg-base-100 w-full shadow-xl">
@@ -115,6 +121,7 @@ const SignUp = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
