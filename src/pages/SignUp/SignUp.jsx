@@ -1,25 +1,25 @@
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import signUpImage from '../../assets/others/authentication2.png';
+import signUpImage from "../../assets/others/authentication2.png";
+import { useForm } from "react-hook-form";
 
 const SignUp = () => {
-    const [hidden, setHidden] = useState(true);
+  const [hidden, setHidden] = useState(true);
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {};
 
-   
-    const handleSignUp = e =>{
-
-    }
-
-    return (
-        <div className="py-10">
+  return (
+    <div className="py-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        
         <div className="card bg-base-100 w-full shadow-xl">
-          <form className="card-body" onSubmit={handleSignUp}>
-            <h2 className="text-3xl text-center py-6 font-bold">
-              Sign Up!
-            </h2>
+          <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
+            <h2 className="text-3xl text-center py-6 font-bold">Sign Up!</h2>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>
@@ -30,7 +30,11 @@ const SignUp = () => {
                 name="name"
                 className="input input-bordered"
                 required
+                {...register("name", { required: true })}
               />
+              {errors.name && (
+                <span className="text-red-600 mt-2">Name is required</span>
+              )}
             </div>
             <div className="form-control">
               <label className="label">
@@ -42,7 +46,11 @@ const SignUp = () => {
                 name="email"
                 className="input input-bordered"
                 required
+                {...register("email", { required: true })}
               />
+              {errors.email && (
+                <span className="text-red-600 mt-2">Email is required</span>
+              )}
             </div>
             <div className="form-control">
               <label className="label">
@@ -54,7 +62,17 @@ const SignUp = () => {
                 name="password"
                 className="input input-bordered"
                 required
+                {...register("password", 
+                  {
+                   required: true,
+                   minLength: 6,
+                   maxLength: 20,
+                   
+                  })}
               />
+              {errors.password?.type === 'required' && (
+                <span className="text-red-600 mt-2">Password is required</span>
+              )}
               <p className="pt-6">
                 Already have an account? Please,{" "}
                 <Link
@@ -65,7 +83,7 @@ const SignUp = () => {
                 </Link>{" "}
               </p>
             </div>
-            
+
             <div className="form-control mt-6">
               <button className="btn bg-[#d1a054] text-white">Sign Up</button>
             </div>
@@ -88,7 +106,7 @@ const SignUp = () => {
         </div>
       </div>
     </div>
-    );
+  );
 };
 
 export default SignUp;

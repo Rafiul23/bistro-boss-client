@@ -1,14 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import loginImage from '../../assets/others/authentication1.png';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
+import { AuthContext } from "../../provider/AuthProvider";
 
 
 const Login = () => {
     const [hidden, setHidden] = useState(true);
     const [disabled, setDisabled] = useState(true);
     const captchaRef = useRef(null);
+    const {signIn} = useContext(AuthContext);
 
     useEffect(()=>{
       loadCaptchaEnginge(6); 
@@ -24,7 +26,16 @@ const Login = () => {
     }
 
     const handleLogin = e =>{
+      e.preventDefault();
+      const form = e.target;
+      const email = form.email.value;
+      const password = form.password.value;
 
+      signIn(email, password)
+      .then(result =>{
+        const user = result.user;
+        console.log(user);
+      })
     }
 
     return (
