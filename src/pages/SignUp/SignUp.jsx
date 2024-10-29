@@ -29,7 +29,7 @@ const SignUp = () => {
     <Helmet>
       <title>Bistro Boss | Sign Up</title>
     </Helmet>
-    <div className="py-10">
+    <div className="py-10 bg-base-200">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="card bg-base-100 w-full shadow-xl">
           <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
