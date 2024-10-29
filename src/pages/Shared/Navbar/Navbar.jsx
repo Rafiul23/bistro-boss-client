@@ -6,7 +6,7 @@ import useCart from "../../../hooks/useCart";
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const {cart} = useCart();
-  console.log(cart);
+  // console.log(cart);
 
   const handleLogOut = () => {
     logOut()
@@ -88,7 +88,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/order/salad"
+          to="/dashboard/cart"
           className={({ isActive, isPending }) =>
             isPending
               ? "pending"
