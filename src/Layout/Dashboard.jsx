@@ -1,4 +1,4 @@
-import { FaHome, FaList, FaShoppingCart, FaStar } from "react-icons/fa";
+import { FaHome, FaList, FaShoppingCart, FaStar, FaEnvelope, FaUtensils, FaUsers, FaBook  } from "react-icons/fa";
 import { FaCalendarDays } from "react-icons/fa6";
 import { IoIosMenu } from "react-icons/io";
 import { NavLink, Outlet } from "react-router-dom";
@@ -7,12 +7,47 @@ import useCart from "../hooks/useCart";
 const Dashboard = () => {
 
   const {cart} = useCart();
+  const isAdmin = true;
 
   return (
     <div className="flex md:flex-row flex-col gap-4">
       <div className="w-64 p-4 min-h-screen bg-[#d1a054]">
         <ul className="menu">
-          <li>
+          {
+            isAdmin ? <>
+            <li>
+            <NavLink to="/dashboard/adminHome">
+            <FaHome></FaHome>
+            Admin Home
+            </NavLink>
+          </li>
+            <li>
+            <NavLink to="/dashboard/addItems">
+           <FaUtensils></FaUtensils>
+            Add Items
+            </NavLink>
+          </li>
+            <li>
+            <NavLink to="/dashboard/manageItems">
+           <FaList></FaList>
+            Manage Items
+            </NavLink>
+          </li>
+            <li>
+            <NavLink to="/dashboard/manageBookings">
+            <FaBook></FaBook>
+            Manage Bookings
+            </NavLink>
+          </li>
+            <li>
+            <NavLink to="/dashboard/manageUsers">
+           <FaUsers></FaUsers>
+            All Users
+            </NavLink>
+          </li>
+            
+            </> : <>
+            <li>
             <NavLink to="/dashboard/userHome">
             <FaHome></FaHome>
             User Home
@@ -38,10 +73,12 @@ const Dashboard = () => {
           </li>
           <li>
             <NavLink to="/dashboard/bookings">
-            <FaList></FaList>
+            <FaBook></FaBook>
             My Bookings
             </NavLink>
           </li>
+            </>
+          }
         <div className="divider"></div>
         <li>
             <NavLink to="/">
@@ -53,6 +90,12 @@ const Dashboard = () => {
             <NavLink to="/order/salad">
             <IoIosMenu></IoIosMenu> 
             Menu
+            </NavLink>
+          </li>
+        <li>
+            <NavLink to="/order/contact">
+            <FaEnvelope />
+            Contact
             </NavLink>
           </li>
         </ul>
