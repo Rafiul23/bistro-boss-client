@@ -7,6 +7,7 @@ import { Helmet } from "react-helmet-async";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const SignUp = () => {
   const axiosPublic = useAxiosPublic();
@@ -152,10 +153,10 @@ const SignUp = () => {
               </button>
             </div>
           </div>
-          {/* <p className="text-center my-2">Or</p>
+          <p className="text-center my-2 divider">Or</p>
           <div className="py-5 text-center">
             <SocialLogin></SocialLogin>
-          </div> */}
+          </div>
         </div>
         <div className="w-full flex justify-center items-center">
           <img src={signUpImage} alt="signup image" width={500} height={500} />

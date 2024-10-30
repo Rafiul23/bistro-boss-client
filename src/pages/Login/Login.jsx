@@ -10,6 +10,7 @@ import {
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const Login = () => {
   const [hidden, setHidden] = useState(true);
@@ -141,10 +142,10 @@ const Login = () => {
                 </button>
               </div>
             </div>
-            {/* <p className="text-center my-2">Or</p>
+            <p className="text-center my-2 divider">Or</p>
           <div className="py-5 text-center">
             <SocialLogin></SocialLogin>
-          </div> */}
+          </div>
           </div>
         </div>
       </div>
