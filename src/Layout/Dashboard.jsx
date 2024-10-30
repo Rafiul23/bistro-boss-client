@@ -1,11 +1,12 @@
 import { FaHome, FaList, FaShoppingCart, FaStar } from "react-icons/fa";
 import { FaCalendarDays } from "react-icons/fa6";
+import { IoIosMenu } from "react-icons/io";
 import { NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
   return (
     <div className="flex md:flex-row flex-col">
-      <div className="w-64 p-4 min-h-full bg-[#d1a054]">
+      <div className="w-64 p-4 min-h-screen bg-[#d1a054]">
         <ul className="menu">
           <li>
             <NavLink to="/dashboard/userHome">
@@ -34,7 +35,20 @@ const Dashboard = () => {
           <li>
             <NavLink to="/dashboard/bookings">
             <FaList></FaList>
-            My Booking
+            My Bookings
+            </NavLink>
+          </li>
+        <div className="divider"></div>
+        <li>
+            <NavLink to="/">
+            <FaHome></FaHome>
+            Home
+            </NavLink>
+          </li>
+        <li>
+            <NavLink to="/order/salad">
+            <IoIosMenu></IoIosMenu> 
+            Menu
             </NavLink>
           </li>
         </ul>
