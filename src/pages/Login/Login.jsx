@@ -18,7 +18,7 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const from = location.state.from?.pathname || "/";
+  // const from = location.state.from?.pathname || "/";
 
   useEffect(() => {
     loadCaptchaEnginge(6);
@@ -42,7 +42,7 @@ const Login = () => {
     signIn(email, password).then((result) => {
       const user = result.user;
       console.log(user);
-      navigate(from, { replace: true });
+      navigate('/');
       Swal.fire({
         title: "Login Successful",
         showClass: {

@@ -2,8 +2,12 @@ import { FaHome, FaList, FaShoppingCart, FaStar } from "react-icons/fa";
 import { FaCalendarDays } from "react-icons/fa6";
 import { IoIosMenu } from "react-icons/io";
 import { NavLink, Outlet } from "react-router-dom";
+import useCart from "../hooks/useCart";
 
 const Dashboard = () => {
+
+  const {cart} = useCart();
+
   return (
     <div className="flex md:flex-row flex-col gap-4">
       <div className="w-64 p-4 min-h-screen bg-[#d1a054]">
@@ -23,7 +27,7 @@ const Dashboard = () => {
           <li>
             <NavLink to="/dashboard/cart">
             <FaShoppingCart></FaShoppingCart>
-            My Cart
+            My Cart {cart?.length}
             </NavLink>
           </li>
           <li>

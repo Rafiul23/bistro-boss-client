@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import signUpImage from "../../assets/others/authentication2.png";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const SignUp = () => {
+  const axiosPublic = useAxiosPublic();
+  const navigate = useNavigate();
   const [hidden, setHidden] = useState(true);
   const {createUser} = useAuth();
   const {
@@ -15,12 +19,41 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
+    const name = data.name;
     const email = data.email;
     const password = data.password;
     createUser(email, password)
     .then(result =>{
       const user = result.user;
-      console.log(user);
+      const userInfo = {
+        name,
+        email
+      }
+      // console.log(user);
+      axiosPublic.post('/users', userInfo)
+      .then(res =>{
+        if(res.data.insertedId){
+          Swal.fire({
+            title: "New user created successfully",
+            showClass: {
+              popup: `
+                  animate__animated
+                  animate__fadeInUp
+                  animate__faster
+                `,
+            },
+            hideClass: {
+              popup: `
+                  animate__animated
+                  animate__fadeOutDown
+                  animate__faster
+                `,
+            },
+          });
+          navigate('/');
+        }
+      })
+     
     })
   };
 
