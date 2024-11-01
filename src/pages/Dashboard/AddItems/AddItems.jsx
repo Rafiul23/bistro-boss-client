@@ -1,11 +1,50 @@
 import React from "react";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { useForm } from "react-hook-form";
+import { FaUtensils } from "react-icons/fa6";
+import useAxiosPublic from './../../../hooks/useAxiosPublic';
+import useAxiosSecure from './../../../hooks/useAxiosSecure';
+import Swal from "sweetalert2";
+const image_hosting_key = import.meta.env.VITE_Image_hosting_Api_key;
+const image_hosting_api = 
+`https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+
 
 const AddItems = () => {
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => {
+    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
+
+  const { register, handleSubmit, reset } = useForm();
+  const onSubmit = async(data) => {
     console.log(data);
+    const imageFile = {image: data.image[0]};
+    const imageRes = await axiosPublic.post(image_hosting_api, imageFile, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    })
+   
+    if(imageRes.data.success){
+        const menuItem = {
+            name: data.name,
+            category: data.category,
+            price: parseFloat(data.price),
+            recipe: data.recipe,
+            image: imageRes.data.data.display_url
+        };
+
+        const menuRes = await axiosSecure.post('/menu', menuItem);
+        if(menuRes.data.insetedId){
+            reset();
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: `${data.name} has been added`,
+                showConfirmButton: false,
+                timer: 1500
+              });
+        }
+    }
   };
   return (
     <div>
@@ -40,10 +79,10 @@ const AddItems = () => {
           </label>
           <select
             className="select select-bordered w-full "
-            select
+            defaultValue={'default'}
             {...register("categoy")}
           >
-            <option disabled>Select a category</option>
+            <option value={'default'} disabled>Select a category</option>
             <option value="salad">Salad</option>
 
             <option value="pizza">Pizza</option>
@@ -79,8 +118,17 @@ const AddItems = () => {
           <textarea  className="textarea textarea-bordered textarea-lg w-full" {...register("recipe")} required ></textarea>
           </div>
           
-          
-          <input type="submit" value={'Add Item'} className="btn" />
+          <div className="my-4">
+          <label className="form-control">
+            <div className="label">
+              <span className="label-text font-semibold">Recipe Image*</span>
+            </div>
+          </label>
+          <input type="file" className="file-input file-input-bordered w-full max-w-xs" required />
+          </div>
+          <button className="btn bg-[#d1a054] text-white" >
+            Add Items <FaUtensils></FaUtensils>
+          </button>
         </form>
       </div>
     </div>
