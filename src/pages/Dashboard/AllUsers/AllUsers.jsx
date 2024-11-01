@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { FaTrashCan } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
 import Swal from "sweetalert2";
+import SectionTitle from './../../../components/SectionTitle/SectionTitle';
 
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
@@ -71,8 +72,13 @@ const AllUsers = () => {
 
   return (
     <div>
-      <div className="flex justify-between my-4 p-8">
-        <h2 className="text-3xl font-semibold">All Users</h2>
+      <SectionTitle
+      subHeading={'How many??'}
+      heading={'Manage All Users'}
+      ></SectionTitle>
+
+      <div className="flex my-4 p-8">
+        
         <h2 className="text-3xl font-semibold">Total Users: {users?.length}</h2>
       </div>
       <div className="overflow-x-auto">
