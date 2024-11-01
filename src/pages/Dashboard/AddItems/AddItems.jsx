@@ -54,6 +54,7 @@ const AddItems = () => {
           </div>
 
           <div className="w-full md:w-1/2">
+          {/* price */}
           <label className="form-control w-3/4 ">
             <div className="label">
               <span className="label-text font-semibold">Price*</span>
@@ -66,12 +67,20 @@ const AddItems = () => {
               required
               className="input input-bordered w-full"
             />
-
             </div>  
+          </div>
 
+          <div className="w-full my-4">
+          <label className="form-control">
+            <div className="label">
+              <span className="label-text font-semibold">Recipe*</span>
+            </div>
+          </label>
+          <textarea  className="textarea textarea-bordered textarea-lg w-full" {...register("recipe")} required ></textarea>
           </div>
           
-          <input type="submit" />
+          
+          <input type="submit" value={'Add Item'} className="btn" />
         </form>
       </div>
     </div>
