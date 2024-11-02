@@ -2,69 +2,68 @@ import {
     PaymentElement,
     useStripe,
     useElements,
+    CardElement,
   } from "@stripe/react-stripe-js";
 
 const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
 
-  const [errorMessage, setErrorMessage] = useState(null);
+ 
 
   const handleSubmit = async (event) => {
+    // Block native form submission.
     event.preventDefault();
 
-    if (elements == null) {
+    if (!stripe || !elements) {
+      // Stripe.js has not loaded yet. Make sure to disable
+      // form submission until Stripe.js has loaded.
       return;
     }
 
-    // Trigger form validation and wallet collection
-    const { error: submitError } = await elements.submit();
-    if (submitError) {
-      // Show error to your customer
-      setErrorMessage(submitError.message);
+    // Get a reference to a mounted CardElement. Elements knows how
+    // to find your CardElement because there can only ever be one of
+    // each type of element.
+    const card = elements.getElement(CardElement);
+
+    if (card == null) {
       return;
     }
 
-    // Create the PaymentIntent and obtain clientSecret from your server endpoint
-    const res = await fetch("/create-intent", {
-      method: "POST",
-    });
-
-    const { client_secret: clientSecret } = await res.json();
-
-    const { error } = await stripe.confirmPayment({
-      //`Elements` instance that was used to create the Payment Element
-      elements,
-      clientSecret,
-      confirmParams: {
-        return_url: "https://example.com/order/123/complete",
-      },
+    // Use your card Element with other Stripe.js APIs
+    const {error, paymentMethod} = await stripe.createPaymentMethod({
+      type: 'card',
+      card,
     });
 
     if (error) {
-      // This point will only be reached if there is an immediate error when
-      // confirming the payment. Show error to your customer (for example, payment
-      // details incomplete)
-      setErrorMessage(error.message);
+      console.log('[error]', error);
     } else {
-      // Your customer will be redirected to your `return_url`. For some payment
-      // methods like iDEAL, your customer will be redirected to an intermediate
-      // site first to authorize the payment, then redirected to the `return_url`.
+      console.log('[PaymentMethod]', paymentMethod);
     }
   };
   return (
     <form onSubmit={handleSubmit}>
-      <PaymentElement />
-      <button
-        className="btn btn-primary"
-        type="submit"
-        disabled={!stripe || !elements}
-      >
-        Pay
-      </button>
-      {/* Show error message to your customers */}
-      {errorMessage && <div>{errorMessage}</div>}
-    </form>
+    <CardElement
+      options={{
+        style: {
+          base: {
+            fontSize: '16px',
+            color: '#424770',
+            '::placeholder': {
+              color: '#aab7c4',
+            },
+          },
+          invalid: {
+            color: '#9e2146',
+          },
+        },
+      }}
+    />
+    <button type="submit" disabled={!stripe}>
+      Pay
+    </button>
+  </form>
   );
 };
 
