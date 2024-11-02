@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const ManageItems = () => {
-    const [menu] = useMenu();
+    const [menu, , refetch] = useMenu();
     const axiosSecure = useAxiosSecure();
 
   const handleDeleteItem = (_id)=>{
@@ -77,7 +77,7 @@ const ManageItems = () => {
                 <td>{item.price}</td>
                 <td>
                  
-                <Link to={`/update/${item._id}`}>
+                <Link to={`/dashboard/updateItem/${item._id}`}>
                 <button className="btn text-white bg-[#d1a054]"
                     >
                       Update
