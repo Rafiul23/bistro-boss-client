@@ -14,6 +14,7 @@ import AddItems from "../pages/Dashboard/AddItems/AddItems";
 import ManageItems from "../pages/Dashboard/ManageItems/ManageItems";
 import UpdateItem from "../pages/Dashboard/UpdateItem/UpdateItem";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import Payment from "../pages/Dashboard/Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -54,7 +55,10 @@ const router = createBrowserRouter([
         path: "cart",
         element: <Cart></Cart>,
       },
-
+      {
+        path: 'payment',
+        element: <Payment></Payment>
+      },
       // admin route
       {
         path: "users",
