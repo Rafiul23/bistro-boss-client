@@ -13,8 +13,7 @@ const UpdateItem = () => {
   const menuData = useLoaderData();
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
-  const { name, category, price, recipe } = menuData;
-  console.log(menuData);
+  const { name, category, price, recipe, _id } = menuData;
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = async (data) => {
     console.log(data);
@@ -26,7 +25,7 @@ const UpdateItem = () => {
     });
 
     if (imageRes.data.success) {
-      const menuItem = {
+      const updatedMenuItem = {
         name: data.name,
         category: data.category,
         price: parseFloat(data.price),
@@ -34,13 +33,13 @@ const UpdateItem = () => {
         image: imageRes.data.data.display_url,
       };
 
-      const menuRes = await axiosSecure.post("/menu", menuItem);
-      if (menuRes.data.insetedId) {
+      const menuRes = await axiosSecure.patch(`/menu/${_id}`, updatedMenuItem);
+      if (menuRes.data.modifiedCount > 0) {
         reset();
         Swal.fire({
           position: "center",
           icon: "success",
-          title: `${data.name} has been added`,
+          title: `${data.name} has been updated`,
           showConfirmButton: false,
           timer: 1500,
         });
