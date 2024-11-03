@@ -78,8 +78,15 @@ const Dashboard = () => {
             My Bookings
             </NavLink>
           </li>
+          <li>
+            <NavLink to="/dashboard/paymentHistory">
+           <FaList></FaList>
+            Payment History
+            </NavLink>
+          </li>
             </>
           }
+          {/* shared */}
         <div className="divider"></div>
         <li>
             <NavLink to="/">
