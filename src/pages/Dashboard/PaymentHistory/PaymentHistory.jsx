@@ -23,6 +23,45 @@ const PaymentHistory = () => {
             heading={'Payment History'}
             ></SectionTitle>
 
+
+<div className="overflow-x-auto">
+        <table className="table">
+          {/* head */}
+          <thead className="bg-[#d1a054] text-white">
+            <tr>
+              <th>
+                SL No.
+              </th>
+              <th>Email</th>
+              <th>Date</th>
+              <th>Price</th>
+              <th>Transaction ID</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {paymentData?.map((data, index) => (
+              <tr key={data._id}>
+                <th>{index + 1}</th>
+                <td>
+                  <div className="flex items-center gap-3">
+                   
+                    <div>
+                      <div className="font-bold">{data.email}</div>
+                    </div>
+                  </div>
+                </td>
+                <td>{data.date}</td>
+                <td>$ {data.price}</td>
+                <td>
+                  {data.transactionId}
+                </td>
+                <td>{data.status}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
         </div>
     );
 };
