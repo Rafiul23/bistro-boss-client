@@ -29,7 +29,8 @@ const FoodCard = ({item}) => {
             Swal.fire({
               title: "Added to Cart!",
               text: `${name} has been added to cart.`,
-              icon: "success"
+              icon: "success",
+              timer: 1500
             });
           }
         })

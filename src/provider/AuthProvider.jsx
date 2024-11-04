@@ -49,7 +49,7 @@ const AuthProvider = ({children})=>{
                 localStorage.removeItem('token');
                 setLoading(false);
             }
-x        });
+       });
       
         return ()=>{
            return unSubscribe();
